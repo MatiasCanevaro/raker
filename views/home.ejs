@@ -1,64 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory Management</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #74b9ff, #a29bfe);
-            color: #2d3436;
-        }
-        .header {
-            text-align: center;
-            padding: 2rem;
-            background-color: #6c5ce7;
-            color: white;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        .container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: 2rem;
-        }
-        .category-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin: 1rem;
-            padding: 1rem;
-            width: 200px;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .category-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-        .category-card h3 {
-            margin: 0.5rem 0;
-            font-size: 1.2rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raker - URL Shortener</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      background: #ffffff;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 40px;
+      max-width: 500px;
+      width: 90%;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: 600;
+      color: #5a67d8;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .url-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input[type="url"] {
+      padding: 10px 15px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      background-color: #5a67d8;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #4c51bf;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Welcome to Inventory Management</h1>
-        <p>Choose a category to explore items</p>
-    </div>
-    <div class="container" id="categories-container">
-        <% categories.forEach(category => { %>
-            <div class="category-card" onclick="window.location.href='/category/<%= category.id %>/items'">
-                <h3><%= category.name %></h3>
-            </div>
-        <% }); %>
-    </div>
+  <div class="container">
+    <div class="logo">Raker</div>
+    <div class="subtitle">Simplify your links with ease</div>
+    <form class="url-form" action="/shorten" method="POST">
+      <input type="url" name="longURL" placeholder="Paste your URL here" required>
+      <button type="submit">Shorten URL</button>
+    </form>
+  </div>
 </body>
 </html>
