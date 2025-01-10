@@ -81,10 +81,13 @@
   <div class="container">
     <div class="logo">Raker</div>
     <div class="subtitle">Simplify your links with ease</div>
-    <form class="url-form" action="/shorten" method="POST">
-      <input type="url" name="longURL" placeholder="Paste your URL here" required>
+    <form class="url-form" action="/shortUrl" method="POST">
+      <input type="url" name="long_url" placeholder="Paste your URL here" required>
       <button type="submit">Shorten URL</button>
     </form>
+    <% if (shortUrl) { %>
+        <p>Your short URL is <a href="/<%= shortUrl %>"><%= shortUrl %></a></p>
+    <% } %>
   </div>
 </body>
 </html>

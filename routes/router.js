@@ -1,10 +1,9 @@
 const { Router } = require("express");
-const urlController = require("../controllers/homeController");
+const urlController = require("../controllers/urlController");
 const router = Router();
 
-router.get("/", urlController.get);
-
-//router.get("/category/:categoryId/items", itemController.getAllCategoryItems);
-
+router.get("/", urlController.getHome);
+router.post("/shortUrl", urlController.createShortURL);
+router.get("/:shortUrl", urlController.getWebpage);
 
 module.exports = router;
