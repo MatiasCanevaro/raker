@@ -33,7 +33,7 @@ exports.getWebpage = async (req, res) => {
     });
 
     if (!url) {
-        return res.status(404).send("Short URL not found.");
+        return res.status(404).render("404");
     }
 
     res.redirect(url.long_url);
