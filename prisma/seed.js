@@ -1,28 +1,36 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-async function main() {
-  const existingUrl = await prisma.url.findFirst();
+async function createTableURL() {
+  try {
+    const result = await prisma.$queryRaw`SELECT to_regclass('public.url')`;
+    if (!result[0].to_regclass) {
+      console.log("The `url` table does not exist. Creating the table...");
 
-  if (existingUrl) {
-    console.log("URLs have already been seeded.");
-    return;
+      await prisma.$executeRaw`
+        CREATE TABLE public.url (
+          id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+          createdAt TIMESTAMPTZ DEFAULT now(),
+          updatedAt TIMESTAMPTZ DEFAULT now(),
+          short_url VARCHAR(255),
+          long_url VARCHAR(255)
+        )
+      `;
+      console.log("The `url` table has been created.");
+    } else {
+      console.log("The `url` table already exists.");
+    }
+  } catch (error) {
+    console.error("Error while checking the existence of the table:", error);
   }
+}
 
-  await prisma.url.create({
-    data: {
-      short_url: "example",
-      long_url: "https://exampleasdasdasdasd.com",
-    },
-  });
-
-  console.log("Table 'url' is now populated.");
+async function main() {
+  await createTableURL();
+  await prisma.$disconnect();
 }
 
 main()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
   .catch(async (error) => {
     console.error(error);
     await prisma.$disconnect();
