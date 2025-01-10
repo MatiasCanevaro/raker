@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74b9ff, #a29bfe);
+            color: #2d3436;
+        }
+        .header {
+            text-align: center;
+            padding: 2rem;
+            background-color: #6c5ce7;
+            color: white;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 2rem;
+        }
+        .category-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 1rem;
+            padding: 1rem;
+            width: 200px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .category-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        .category-card h3 {
+            margin: 0.5rem 0;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to Inventory Management</h1>
+        <p>Choose a category to explore items</p>
+    </div>
+    <div class="container" id="categories-container">
+        <% categories.forEach(category => { %>
+            <div class="category-card" onclick="window.location.href='/category/<%= category.id %>/items'">
+                <h3><%= category.name %></h3>
+            </div>
+        <% }); %>
+    </div>
+</body>
+</html>

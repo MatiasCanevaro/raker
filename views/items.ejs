@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= category.name %> List</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e1e9ec, #d4d2d0);
+            color: #2d3436;
+        }
+        .header {
+            text-align: center;
+            padding: 2rem;
+            background-color: #5a339e;
+            color: white;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 2rem;
+        }
+        .item-card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            margin: 1rem;
+            padding: 1.5rem;
+            width: 220px;
+            text-align: center;
+        }
+        .item-card h3 {
+            margin: 0.5rem 0;
+            font-size: 1.4rem;
+            color: #2d3436;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><%= category.name %></h1>
+        <p>Here are the items available for this category</p>
+    </div>
+    <div class="container" id="items-container">
+        <% items.forEach(item => { %>
+            <div class="item-card">
+                <h3><%= item.name %></h3>
+            </div>
+        <% }); %>
+    </div>
+</body>
+</html>
