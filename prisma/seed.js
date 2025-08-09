@@ -14,7 +14,7 @@ async function checkIfTableExists() {
           createdAt TIMESTAMPTZ DEFAULT now(),
           updatedAt TIMESTAMPTZ DEFAULT now(),
           short_url TEXT,
-          long_url VARCHAR(255)
+          long_url TEXT
         )
       `;
       console.log("The `url` table has been created.");
