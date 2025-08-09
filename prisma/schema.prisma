@@ -18,5 +18,5 @@ model url{
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
   short_url    String    @db.Text
-  long_url     String    @db.VarChar(255)
+  long_url     String    @db.Text
 }
