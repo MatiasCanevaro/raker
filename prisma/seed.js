@@ -13,7 +13,7 @@ async function checkIfTableExists() {
           id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
           createdAt TIMESTAMPTZ DEFAULT now(),
           updatedAt TIMESTAMPTZ DEFAULT now(),
-          short_url VARCHAR(255),
+          short_url TEXT,
           long_url VARCHAR(255)
         )
       `;
