@@ -18,6 +18,7 @@ exports.createShortURL = async (req, res) => {
             },
         });
         
+        console.log(`New short URL created: ${newUrl.short_url}`);
         res.render("home", { shortUrl: newUrl.short_url });
 
     } catch (error) {
